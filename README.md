@@ -1,5 +1,9 @@
 Basic repo with templates for .NET Core
 
+#### usefull links on how to start with creating custom template
+
+https://github.com/dotnet/templating
+https://rehansaeed.com/custom-project-templates-using-dotnet-new/
 
 #### Install Templates
 
