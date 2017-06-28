@@ -1,0 +1,30 @@
+{
+  "author": "Michal Franc",
+  "classifications": [ "micorservice" ],
+  "name": "Microservice .NET Core",
+  "identity": "Microservice.Core.CSharp.Basic",
+  "shortName": "micro-basic", 
+  "groupIdentity": "Microservice.Core.CSharp",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "MicroserviceCore", 
+  "symbols":{
+      "EnableNLog": {
+          "type": "parameter",
+          "dataType": "bool",
+          "defaultValue":"true"
+      }
+  },
+  "sources": [
+    {
+        "modifiers": [
+            {
+                "condition": "(!EnableNLog)",
+                "exclude": [ "NLog.config" ]
+            }
+        ]
+    }
+  ]
+}
