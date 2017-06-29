@@ -8,4 +8,4 @@ RUN dotnet restore
 
 ENTRYPOINT [ "dotnet", "run" ]
 
-CMD [ 5000 ]
+CMD [ "5000" ]
