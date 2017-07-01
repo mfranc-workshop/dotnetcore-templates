@@ -1,0 +1,20 @@
+{
+  "author": "Michal Franc",
+  "classifications": [ "micorservice" ],
+  "name": "Microservice .NET Core Job",
+  "identity": "Microservice.Core.CSharp.Job",
+  "shortName": "micro-job", 
+  "groupIdentity": "Microservice.Core.CSharp.Job",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "MicroserviceCore", 
+  "symbols":{
+      "EnableNLog": {
+          "type": "parameter",
+          "dataType": "bool",
+          "defaultValue":"true"
+      }
+  }
+}

@@ -1,10 +1,10 @@
 {
   "author": "Michal Franc",
   "classifications": [ "micorservice" ],
-  "name": "Microservice .NET Core",
+  "name": "Microservice .NET Core Basic:",
   "identity": "Microservice.Core.CSharp.Basic",
   "shortName": "micro-basic", 
-  "groupIdentity": "Microservice.Core.CSharp",
+  "groupIdentity": "Microservice.Core.CSharp.Basic",
   "tags": {
     "language": "C#",
     "type": "project"
