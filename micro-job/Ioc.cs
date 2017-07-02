@@ -5,10 +5,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Quartz.Impl;
 using Quartz.Spi;
 using Quartz.Simpl;
+using Quartz;
+using System;
 using SimpleInjector;
 using SimpleInjector.Integration.AspNetCore;
 
-namespace monolithic_shop_core.DI
+namespace MicroserviceCore
 {
     public static class Ioc
     {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -17,7 +18,7 @@ namespace MicroserviceCore
 {
     public class Startup
     {
-        private readonly Container _container;
+        private readonly Container _container = new Container();
 
         public Startup(IHostingEnvironment env, ILogger<Startup> logger)
         {
