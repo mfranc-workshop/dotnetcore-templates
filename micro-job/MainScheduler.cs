@@ -5,6 +5,7 @@ using NLog;
 using Quartz;
 using Quartz.Impl;
 using MicroserviceCore.Jobs;
+using SimpleInjector;
 
 namespace MicroserviceCore 
 {
@@ -13,11 +14,11 @@ namespace MicroserviceCore
         private static ILogger _logger = LogManager.GetCurrentClassLogger();
         private static IScheduler _scheduler;
 
-        public static void Start()
+        public static void Start(Container container)
         {
             try
             {
-                _scheduler = new StdSchedulerFactory().GetScheduler().Result;
+                _scheduler = container.GetInstance<IScheduler>();
                 _scheduler.Start();
 
                 var triggerTransfer = TriggerBuilder.Create()

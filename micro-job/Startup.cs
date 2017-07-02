@@ -10,11 +10,15 @@ using Quartz;
 using System.Threading;
 using NLog.Extensions.Logging;
 using NLog.Web;
+using SimpleInjector;
+using SimpleInjector.Integration.AspNetCore.Mvc;
 
 namespace MicroserviceCore
 {
     public class Startup
     {
+        private readonly Container _container;
+
         public Startup(IHostingEnvironment env, ILogger<Startup> logger)
         {
             var builder = new ConfigurationBuilder()
@@ -28,7 +32,6 @@ namespace MicroserviceCore
 
             logger.LogInformation("Service started");
 
-            MainScheduler.Start();
         }
 
         public IConfigurationRoot Configuration { get; }
@@ -36,6 +39,10 @@ namespace MicroserviceCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddSingleton<IControllerActivator>((x) => {
+                return new SimpleInjectorControllerActivator(_container);
+            });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -45,6 +52,10 @@ namespace MicroserviceCore
             app.UseDeveloperExceptionPage();
 
             app.UseMvc();
+
+            app.InitializeContainer(_container, env);
+
+            MainScheduler.Start(_container);
         }
     }
 }
