@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-#if (EnableNLog)
+using SimpleInjector;
+using SimpleInjector.Integration.AspNetCore.Mvc;
 using NLog.Extensions.Logging;
 using NLog.Web;
-#endif
 
 namespace MicroserviceCore
 {
     public class Startup
     {
+        private Container _container = new Container();
+
         public Startup(IHostingEnvironment env, ILogger<Startup> logger)
         {
             var builder = new ConfigurationBuilder()
@@ -24,9 +27,7 @@ namespace MicroserviceCore
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
 
-#if (EnableNLog)
             env.ConfigureNLog("NLog.config");
-#endif
 
             logger.LogInformation("Service started");
         }
@@ -36,13 +37,17 @@ namespace MicroserviceCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddSingleton<IControllerActivator>((x) => {
+                return new SimpleInjectorControllerActivator(_container);
+            });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-#if (EnableNLog)
             loggerFactory.AddNLog();
-#endif
+
+            app.InitializeContainer(_container, env);
 
             app.UseDeveloperExceptionPage();
 

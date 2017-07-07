@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using NLog;
 
 namespace MicroserviceCore.Controllers
 {
@@ -9,18 +9,17 @@ namespace MicroserviceCore.Controllers
     */
     public class CoreController: Controller
     {
-        private ILogger<CoreController> _logger;
+        private ILogger _logger = LogManager.GetCurrentClassLogger();
 
-        public CoreController(ILogger<CoreController> logger)
+        public CoreController()
         {
-           _logger = logger; 
         }
 
         [HttpGet]
         [Route("core/{id}")]
         public string Micro(int id)
         {
-            _logger.LogInformation($"calling with id - {id}");
+            _logger.Info($"calling with id - {id}");
             return $"Core-{id}";
         }
     }

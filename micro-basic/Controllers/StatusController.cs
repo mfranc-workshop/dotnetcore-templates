@@ -1,10 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-
-#if (EnableNLog)
 using NLog.Targets;
 using NLog;
-#endif
 
 namespace MicroserviceCore.Controllers
 {
@@ -15,12 +12,8 @@ namespace MicroserviceCore.Controllers
         [Route("logs")]
         public IEnumerable<string> Logs()
         {
-#if (EnableNLog)
             var target = (MemoryTarget)LogManager.Configuration.FindTargetByName("memory");
             return target.Logs;
-#else
-            return  new string[] { "Configure logging factory. Logs Disabled." };
-#endif
         }
 
         [HttpGet]

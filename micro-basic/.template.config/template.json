@@ -11,20 +11,7 @@
   },
   "sourceName": "MicroserviceCore", 
   "symbols":{
-      "EnableNLog": {
-          "type": "parameter",
-          "dataType": "bool",
-          "defaultValue":"true"
-      }
   },
   "sources": [
-    {
-        "modifiers": [
-            {
-                "condition": "(!EnableNLog)",
-                "exclude": [ "NLog.config" ]
-            }
-        ]
-    }
   ]
 }
