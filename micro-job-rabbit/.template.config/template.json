@@ -1,0 +1,15 @@
+{
+  "author": "Michal Franc",
+  "classifications": [ "micorservice" ],
+  "name": "Microservice .NET Core Job with Rabbit",
+  "identity": "Microservice.Core.CSharp.Job.Rabbit",
+  "shortName": "micro-job-rabbit", 
+  "groupIdentity": "Microservice.Core.CSharp.Job.Rabbit",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "MicroserviceCore", 
+  "symbols":{
+  }
+}
