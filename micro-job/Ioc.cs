@@ -18,7 +18,7 @@ namespace MicroserviceCore
         {
             container.RegisterMvcControllers(app);
 
-            container.Register(() =>
+            container.RegisterSingleton(() =>
             {
                 var sched = new StdSchedulerFactory().GetScheduler().Result;
                 sched.JobFactory = new SimpleInjectiorJobFactory(container);
