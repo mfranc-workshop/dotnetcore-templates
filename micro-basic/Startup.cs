@@ -43,7 +43,7 @@ namespace MicroserviceCore
             });
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IApplicationLifetime appLifeTime)
         {
             loggerFactory.AddNLog();
 
@@ -52,6 +52,8 @@ namespace MicroserviceCore
             app.UseDeveloperExceptionPage();
 
             app.UseMvc();
+
+            appLifeTime.ApplicationStopping.Register(() => _container.Dispose());
         }
     }
 }
