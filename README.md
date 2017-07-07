@@ -12,6 +12,7 @@ Pull the repo and
 ```
 dotnet new -i micro-basic
 dotnet new -i micro-job
+dotnet new -i micro-job-rabbit
 ```
 
 #### Using Templates
