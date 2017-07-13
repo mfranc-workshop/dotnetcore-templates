@@ -25,3 +25,9 @@ dotnet new micro-basic --name <name> -o <folderOutpt>
 ```
 dotnet new micro-basic -h
 ```
+
+#### To reset list of installed templates
+
+```
+dotnet new --debug:reinit
+```
